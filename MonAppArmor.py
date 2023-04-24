@@ -164,12 +164,5 @@ def menu():
 			os.system('clear')
 			menu()
 
-
-
-
-
-
-
-
 if __name__ == '__main__':
     menu()
