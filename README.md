@@ -1,16 +1,18 @@
 # MonAppArmor
-This tool is a command-line user interface that makes it easier and more accessible to manage AppArmor profiles in Linux systems. Through an interactive menu, users can choose between two main options: get system information or create an AppArmor profile for a specific service.
 
-The profile creation is done through a series of user questions, where the binary path of the service is requested, the entered information is displayed for verification, and finally the command is executed to generate the profile. In addition, the program uses the "colored" library to format and color the output in the terminal, and has options to clear the screen and exit the program.
+AppArmor Interactive Tool is a cybersecurity tool for Linux that improves interactivity with AppArmor, allowing system administrators to manage security profiles more efficiently and easily.
+
+This tool features a console user interface that simplifies the process of listing, creating, managing, deactivating, and deleting AppArmor profiles. Additionally, validations have been implemented to ensure that profile files exist before performing operations on them, reducing the likelihood of user errors and increasing system security.
+
+AppArmor Interactive Tool is designed to enhance the management of AppArmor profiles in Linux systems and help system administrators maintain more effective control over their infrastructure's security.
 
 In summary, this tool is useful for Linux system administrators who want to create AppArmor profiles in a simple and visual way, making it accessible to users with different levels of command-line skills.
 
-
-![Texto alternativo de la imagen](IMG/menu.PNG)
+![Texto alternativo de la imagen](IMG/menu1.2.PNG)
 
 # Status
 
-Currently, the project is in its early stages of development, so it is only possible to check the status of the service and create profiles.
+The program is now completed and functional, but I am still working on it to improve its functionality and fix any errors or bugs that may arise. I am open to contributions and suggestions from the community to continue improving the tool and provide an effective security solution for Linux systems.
 
 # Instalation / Instalación
 
