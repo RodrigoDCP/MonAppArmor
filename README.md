@@ -14,6 +14,14 @@ In summary, this tool is useful for Linux system administrators who want to crea
 
 The program is now completed and functional, but I am still working on it to improve its functionality and fix any errors or bugs that may arise. I am open to contributions and suggestions from the community to continue improving the tool and provide an effective security solution for Linux systems.
 
+# Update/upgrade
+
+A system has been implemented to return to the main menu in case an action needs to be cancelled due to an error or change of mind, which helps prevent intentional errors and allows for a seamless return to the menu.
+
+Additionally, a section has been added to the profile administration that displays the current status of each profile, making it easy to identify which profiles need to be configured or restricted.
+
+
+
 # Instalation / Instalación
 
 To use the tool, you must first install the necessary requirements for the program to run smoothly. To do so, run the "install.sh" file from the terminal with the following command:

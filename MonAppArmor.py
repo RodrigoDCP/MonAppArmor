@@ -14,7 +14,6 @@ time.sleep(0.5)
 os.system('clear')
 
 
-
 # ----------------------------------------------------------------------------------------
 
 def AppStatus():
@@ -25,6 +24,7 @@ def AppStatus():
 	print(colored("------------------------------------------", "blue", attrs=["bold"]))
 	os.system('sudo service apparmor status')
 	print(colored("---------------------------------------", "blue", attrs=["bold"]))
+	input(colored("Presione Enter para regresar: ", 'green'))
 	os.system('clear')
 	Appsistema()
 
@@ -86,9 +86,15 @@ def AppPerfil():
 	print(colored("Plantilla: ", 'yellow'), "/usr/sbin/NombreDelServicio")
 	print(colored("Ejemplo: ", 'yellow'), "/usr/sbin/mysqld")
 	print("")
+	print(colored("[r]", 'magenta'), "cancelar acción")
 	print(colored("La ruta puede variar", 'magenta'))
 	print(colored("------------------------------------------", "blue", attrs=["bold"]))
 	perfilBinario = input(colored("Ruta del archivo binario del servicio: ", 'green'))
+	
+	if perfilBinario == "r":
+		os.system('clear')
+		menu()
+	
 	os.system('clear')
 	
 	if not os.path.exists(perfilBinario):
@@ -142,7 +148,6 @@ def AppPerfil():
 		AppPerfil()
 	
 
-
 # ----------------------------------------------------------------------------------------
 
 def Mseguro():
@@ -151,13 +156,18 @@ def Mseguro():
 	print(colored("Escriba el servicio que desea aplicar seguridad", 'yellow'))
 	print(colored("Formato ejemplo:", 'yellow'), "usr.sbin.mysqld")
 	print("")
+	print(colored("[r]", 'magenta'), "cancelar acción")
 	print("El formato no es permanente")
 	print("puede variar de acuerdo al nombre del perfil asignato.")
 	print(colored("------------------------------------------", "blue", attrs=["bold"]))
 	servicio = input(colored("Servicio: ", 'green'))
+	
+	if servicio == "r":
+		os.system('clear')
+		AppAdmin()
+	
 	directorio = "/etc/apparmor.d/" + servicio
 	os.system('clear')
-	
 	if not os.path.exists(directorio):
 		print(colored("Parece que no existe ese perfil", 'red'))
 		print(colored("------------------------------------------", "blue", attrs=["bold"]))
@@ -216,10 +226,16 @@ def Mpermisivo():
 	print(colored("Escriba el perfil que desea poner en modo permisivo", 'yellow'))
 	print(colored("Formato de ejemplo:"), "usr.sbin.mysqld")
 	print("")
+	print(colored("[r]", 'magenta'), "cancelar acción")
 	print("El formato no es permanente")
 	print("puede variar de acuerdo al nombre del perfil asignato.")
 	print(colored("------------------------------------------", "blue", attrs=["bold"]))
 	perfil = input(colored("Perfil: ", 'green'))
+	
+	if perfil == "r":
+		os.system('clear')
+		AppAdmin()
+	
 	directorio = "/etc/apparmor.d/" + perfil
 	os.system('clear')
 	
@@ -281,10 +297,16 @@ def AppDisable():
 	print(colored("Escriba el Perfil que desea deshabilitar", 'yellow'))
 	print(colored("Formato: ", 'yellow'), "usr.sbin.mysqld")
 	print("")
+	print(colored("[r]", 'magenta'), "cancelar acción")
 	print("El formato no es permanente")
 	print("puede variar de acuerdo al nombre del perfil asignato.")
 	print(colored("------------------------------------------", "blue", attrs=["bold"]))
-	perfil = input(colored("Perfil: ", 'green'))	
+	perfil = input(colored("Perfil: ", 'green'))
+	
+	if perfil == "r":
+		os.system('clear')
+		AppAdmin()
+		
 	directorio = "/etc/apparmor.d/" + perfil
 	os.system('clear')
 	
@@ -338,72 +360,7 @@ def AppDisable():
 		time.sleep(2)
 		os.system('clear')
 		AppDisable()
-'''	
-def AppEnable():
-	os.system('ls /etc/apparmor.d/')
-	print(colored("------------------------------------------", "blue", attrs=["bold"]))
-	time.sleep(0.4)
-	print(colored("Escriba el Perfil que desea habilitar", 'yellow'))
-	print(colored("Formato: ", 'yellow'), "usr.sbin.mysqld")
-	print("")
-	print("El formato no es permanente")
-	print("puede variar de acuerdo al nombre del perfil asignato.")
-	print(colored("------------------------------------------", "blue", attrs=["bold"]))
-	perfil = input(colored("Perfil: ", 'green'))	
-	directorio = "/etc/apparmor.d/" + perfil
-	os.system('clear')
-	
-	if not os.path.exists(directorio):
-		print(colored("Parece que no existe ese perfil", 'red'))
-		print(colored("------------------------------------------", "blue", attrs=["bold"]))
-		time.sleep(0.5)
-		print(colored("El dato de entrada fue:", 'yellow'), perfil)
-		print(colored("La busqueda fue:", 'yellow'), directorio)
-		print(colored("------------------------------------------", "blue", attrs=["bold"]))
-		input(colored("Presione Enter para regresar: ", 'green'))
-		os.system('clear')
-		AppEnable()
-	
-	print(colored("Verifique que los datos sean correctos:", 'yellow'))
-	print(colored("------------------------------------------", "blue", attrs=["bold"]))
-	print("")
-	print(colored("Perfil escrito: ", 'magenta') + perfil)
-	print(colored("Directorio de busqueda: ", 'magenta') + directorio)
-	print("")
-	print("")
-	print(colored("Desea continuar con la habilitación?:", 'yellow'), "[y/n]")
-	print(colored("------------------------------------------", "blue", attrs=["bold"]))
-	respuesta = input(colored("Respuesta: ", 'green'))
-	os.system('clear')
-	
-	if respuesta == "y":
-		print(colored("Deshabilitando servicio", 'yellow'))
-		time.sleep(0.4)
-		os.system('aa-enable ' + directorio)
-		print(colored("------------------------------------------", "blue", attrs=["bold"]))
-		time.sleep(0.4)
-		os.system('apparmor_status')
-		print(colored("------------------------------------------", "blue", attrs=["bold"]))
-		time.sleep(0.4)
-		print(colored("Verifique que se haya deshabilitado", 'yellow'))
-		print("")
-		input(colored("Presione Enter para regresar al menu: ", 'green'))
-		os.system('clear')
-		AppAdmin()	
-	
-	elif respuesta == "n":
-		print(colored("Acción cancelada", 'red'))
-		time.sleep(1.5)
-		os.system('clear')
-		AppAdmin()
-		
-	
-	else:
-		print(colored("Opción invalida", 'red'))
-		time.sleep(1.5)
-		os.system('clear')
-		AppEnable()
-'''			
+			
 	
 def AppDelete():
 	os.system('ls /etc/apparmor.d/')
@@ -412,10 +369,16 @@ def AppDelete():
 	print(colored("Escriba el Perfil que desea eliminar", 'yellow'))
 	print(colored("Formato: ", 'yellow'), "usr.sbin.mysqld")
 	print("")
+	print(colored("[r]", 'magenta'), "cancelar acción")
 	print("El formato no es permanente")
 	print("puede variar de acuerdo al nombre del perfil asignato.")
 	print(colored("------------------------------------------", "blue", attrs=["bold"]))
-	perfil = input(colored("Perfil: ", 'green'))	
+	perfil = input(colored("Perfil: ", 'green'))
+	
+	if perfil == "r":
+		os.system('clear')
+		AppAdmin()
+		
 	directorio = "/etc/apparmor.d/" + perfil
 	os.system('clear')
 	
@@ -477,8 +440,7 @@ def AppDelete():
 		print(colored("Acción denegada", 'red'))
 		time.sleep("1.5")
 		os.system('clear')
-		AppDelete()
-		
+		AppDelete()		
 	
 	else:
 		print(colored("Opción invalida", 'red'))
@@ -486,7 +448,18 @@ def AppDelete():
 		os.system('clear')
 		AppDelete()
 
-
+def AppStatusPerfil():
+	print(colored("Verificando status de perfiles...", 'yellow'))
+	time.sleep(0.6)
+	os.system('clear')
+	print(colored("Status:", 'yellow'))
+	print(colored("------------------------------------------", "blue", attrs=["bold"]))
+	os.system("aa-status")
+	print(colored("------------------------------------------", "blue", attrs=["bold"]))
+	input(colored("Presione Enter para regresar: ", 'green'))
+	os.system('clear')
+	AppAdmin()
+	
 
 def AppAdmin():
 	while True:
@@ -496,7 +469,8 @@ def AppAdmin():
 		print(colored("[2]", 'yellow'), "Poner en permisivo un perfil")
 		print(colored("---------------------------------", "yellow"))
 		print(colored("[3]", 'yellow'), "Desactivar un perfil")
-		print(colored("[4]", 'yellow'), "Borrar un perfil")
+		print(colored("[4]", 'yellow'), "status de perfiles")
+		print(colored("[5]", 'yellow'), "Borrar un perfil")
 		print(colored("------------------------------------------", "blue", attrs=["bold"]))
 		print(colored("╭──────────────────────────────╮", "red"))
 		print(colored("│ ", 'red'), colored("[c] ", "magenta") + "limpiar  ", colored("[r]", "magenta"), "regresar", colored(" │", "red"))
@@ -512,6 +486,8 @@ def AppAdmin():
 		elif opcion == "3":
 			AppDisable()
 		elif opcion == "4":
+			AppStatusPerfil()
+		elif opcion == "5":
 			AppDelete()
 		elif opcion == "c":
 			os.system('clear')
@@ -528,9 +504,6 @@ def AppAdmin():
 			os.system('clear')
 			AppAdmin()
 
-
-
-
 # ----------------------------------------------------------------------------------------
 
 def menu():
@@ -544,7 +517,7 @@ def menu():
         |_|   |_|
 ''', 'yellow', attrs=["bold"]))
 		print(colored("	By Cañas", 'magenta', attrs=["bold"]))
-		print(colored("	      version - 1.2", attrs=["bold"]))
+		print(colored("	      version - 1.3", attrs=["bold"]))
 		print(colored("------------------------------------------", "blue", attrs=["bold"]))
 		print(colored("[1]", 'yellow'), "Sistema")
 		print(colored("[2]", 'yellow'), "Crear perfil")
