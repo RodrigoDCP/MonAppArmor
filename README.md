@@ -20,7 +20,7 @@ A system has been implemented to return to the main menu in case an action needs
 
 Additionally, a section has been added to the profile administration that displays the current status of each profile, making it easy to identify which profiles need to be configured or restricted.
 
-
+We have developed a user manual to provide guidance on the proper use of the tool, including a brief glossary with essential terms. The aim is to facilitate understanding and handling of the tool by users."
 
 # Instalation / Instalación
 

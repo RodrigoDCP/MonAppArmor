@@ -1,0 +1,36 @@
+Perfil
+Al ejecutar "Crear perfil", la herramienta monitorea el 
+comportamiento de una aplicación o servicio mientras se 
+ejecuta en el sistema, y luego genera un perfil de 
+AppArmor basado en ese comportamiento. 
+----------------------------
+Modo permisivo o complain
+El perfil aún está activo pero no bloquea ninguna acción. 
+En otras palabras, el perfil solo informará las 
+violaciones en lugar de prevenirlas, lo que permite a los 
+usuarios realizar tareas necesarias mientras se registran 
+las acciones que el perfil considera inseguras. Esto es 
+útil para depurar perfiles y detectar problemas de 
+seguridad sin interrumpir el funcionamiento normal del 
+sistema.
+----------------------------
+Modo seguro o enforce
+El perfil está activo y bloqueará cualquier acción que 
+viole la política de seguridad establecida en el perfil. 
+Esto significa que el perfil previene acciones inseguras 
+en el sistema, protegiéndolo de posibles amenazas 
+de seguridad. Es importante tener en cuenta que algunos 
+perfiles de AppArmor pueden tener permisos de lectura y 
+escritura limitados en ciertas áreas del sistema, lo que 
+puede afectar el funcionamiento de algunas aplicaciones.
+----------------------------
+directorio /usr/sbin
+La ruta /usr/sbin es una ubicación en sistemas operativos 
+Linux donde se almacenan archivos binarios de administración 
+de sistema y servicios esenciales que solo se supone que 
+deben ser ejecutados por usuarios con privilegios de 
+administrador. Los archivos binarios que se encuentran en 
+esta ruta son programas ejecutables de bajo nivel que brindan 
+soporte crítico para el funcionamiento del sistema. En general, 
+esta ruta es utilizada por herramientas y servicios del sistema 
+operativo, y no por aplicaciones o usuarios comunes.
