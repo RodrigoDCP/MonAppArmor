@@ -8,7 +8,7 @@ AppArmor Interactive Tool is designed to enhance the management of AppArmor prof
 
 In summary, this tool is useful for Linux system administrators who want to create AppArmor profiles in a simple and visual way, making it accessible to users with different levels of command-line skills.
 
-![Texto alternativo de la imagen](IMG/menu1.2.PNG)
+![Texto alternativo de la imagen](IMG/menu1.4.PNG)
 
 # Status
 
